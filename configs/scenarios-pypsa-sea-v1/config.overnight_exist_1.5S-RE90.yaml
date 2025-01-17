@@ -1,0 +1,39 @@
+# SPDX-FileCopyrightText:  PyPSA-Earth and PyPSA-Eur Authors
+#
+# SPDX-License-Identifier: CC0-1.0
+
+run:
+  name: overnight_exist_1.5S-RE90   # use this to keep track of runs with different settings
+  base_config: configs/config.sea.yaml  # base configuration file
+  shared_cutouts: true  # set to true to share the default cutout(s) across runs
+                        # Note: value false requires build_cutout to be enabled
+
+scenario:
+  opts: [3H, Co2L0.5-3H, Co2L0.1-3H ]
+
+clean_osm_data_options:
+  use_custom_lines: add_custom
+  path_custom_lines: ../pypsa-sea-data/custom_osm/custom_lines_exist.geojson
+  use_custom_substations: add_custom
+  path_custom_substations: ../pypsa-sea-data/custom_osm/custom_substations_exist.geojson
+
+load_options:
+  prediction_year: 2050  # Load scenarios available with different prediction year (GDP, population)
+  scale: # scales all load time-series, i.e. 2 = doubles load
+    BN: 2.204351157102163
+    ID: 4.339903608046574
+    KH: 5.144579516898982
+    LA: 4.031670201043937
+    MM: 4.239266402689465
+    MY: 1.438100759417188
+    PH: 3.681449819303459
+    SG: 1.260936432843796
+    TH: 1.979296930773076
+    VN: 5.509237403701934
+
+electricity:
+  co2base: 6.748633e+08
+  powerplants_filter: (DateOut >= 2050 or DateOut != DateOut)
+
+costs:
+  year: 2050

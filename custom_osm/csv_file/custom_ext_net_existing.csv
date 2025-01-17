@@ -1,0 +1,2 @@
+id,Type,Region,Region1,tags.power,tags.voltage,tags.name,tags.circuits,tags.frequency,tags.source,x1,y1,x2,y2,DC,status,notes
+0,way,MY,SG,line,275000,Plentong - Woodlands,3,50,ASEAN 2023,103.806467799999,1.48064260000001,103.810604036892,1.46223677232137,FALSE,Existing,

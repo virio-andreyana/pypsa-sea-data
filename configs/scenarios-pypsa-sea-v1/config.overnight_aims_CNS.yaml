@@ -1,0 +1,41 @@
+# SPDX-FileCopyrightText:  PyPSA-Earth and PyPSA-Eur Authors
+#
+# SPDX-License-Identifier: CC0-1.0
+
+run:
+  name: overnight_aims_CNS # use this to keep track of runs with different settings
+  base_config: configs/config.sea.yaml  # base configuration file
+  shared_cutouts: true  # set to true to share the default cutout(s) across runs
+                        # Note: value false requires build_cutout to be enabled
+
+scenario:
+  opts: [3H, Co2L0.5-3H, Co2L0.1-3H ]
+
+clean_osm_data_options:
+  use_custom_lines: add_custom
+  path_custom_lines: ../pypsa-sea-data/custom_osm/custom_lines_aims.geojson
+  use_custom_substations: add_custom
+  path_custom_substations: ../pypsa-sea-data/custom_osm/custom_substations_aims.geojson
+
+load_options:
+  prediction_year: 2050  # Load scenarios available with different prediction year (GDP, population)
+  scale: # scales all load time-series, i.e. 2 = doubles load
+    BN: 1.212608498920127
+    ID: 2.387370987900862
+    KH: 2.830021353659028
+    LA: 2.217812500008282
+    MM: 2.332010692817920
+    MY: 0.791095918431271
+    PH: 2.025157073931867
+    SG: 0.693638230069689
+    TH: 1.088806686906064
+    VN: 3.030618818047057
+
+electricity:
+  co2base: 6.748633e+08
+  powerplants_filter: (DateOut >= 2050 or DateOut != DateOut)
+
+costs:
+  year: 2050
+
+
