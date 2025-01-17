@@ -28,6 +28,9 @@ subregion: # remove 'false' if subregion are to be specified
     Sumatra/ID:
       ID: [1,3,5,8,16,17,24,30,31,32]
 
+scenario:
+  clusters: [200] # The minimum for the whole network is around 50 nodes
+
 enable:
   retrieve_databundle: false #  Recommended 'true', for the first run. Otherwise data might be missing.
   retrieve_databundle_sector: false
