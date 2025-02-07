@@ -5,6 +5,29 @@
 countries: [BN, KH, ID, LA, MY, MM, PH, SG, TH, VN]
 # Can be replaced by country ["NG", "BJ"], continent ["Africa"] or user-specific region, see more at https://pypsa-earth.readthedocs.io/en/latest/configuration.html#top-level-configuration
 
+scenario:
+  clusters: [200] # The minimum for the whole network is around 50 nodes
+
+focus_weights: # Focus weights based on land area
+  BN: 0.001244
+  KH: 0.041030
+  ID: 0.404900
+  LA: 0.055035
+  MY: 0.070880
+  MM: 0.165034
+  PH: 0.065376
+  SG: 0.000128
+  TH: 0.118773
+  VN: 0.077601
+
+enable:
+  retrieve_databundle: false #  Recommended 'true', for the first run. Otherwise data might be missing.
+  retrieve_databundle_sector: false
+  retrieve_cost_data: false # true: retrieves cost data from technology data and saves in resources/costs.csv, false: uses cost data in data/costs.csv
+  download_osm_data: false # If 'true', OpenStreetMap data will be downloaded for the above given countries
+  build_natura_raster: false # If True, then an exclusion raster will be build
+  build_cutout: false
+
 subregion: # remove 'false' if subregion are to be specified
   define_by_gadm:
     ID_Java-Bali: [ID.2_1, ID.4_1, ID.7_1, ID.9_1, ID.10_1, ID.11_1, ID.33_1]
@@ -17,17 +40,6 @@ subregion: # remove 'false' if subregion are to be specified
     MY_Peninsular: [MY.1_1, MY.2_1, MY.3_1, MY.4_1, MY.6_1, MY.7_1, MY.8_1, MY.9_1, MY.10_1, MY.11_1, MY.12_1, MY.15_1, MY.16_1]
     MY_Sabah: [MY.5_1, MY.13_1]
     MY_Sarawak: [MY.14_1]
-
-scenario:
-  clusters: [200] # The minimum for the whole network is around 50 nodes
-
-enable:
-  retrieve_databundle: false #  Recommended 'true', for the first run. Otherwise data might be missing.
-  retrieve_databundle_sector: false
-  retrieve_cost_data: false # true: retrieves cost data from technology data and saves in resources/costs.csv, false: uses cost data in data/costs.csv
-  download_osm_data: false # If 'true', OpenStreetMap data will be downloaded for the above given countries
-  build_natura_raster: false # If True, then an exclusion raster will be build
-  build_cutout: false
 
 cluster_options:
   simplify_network:
